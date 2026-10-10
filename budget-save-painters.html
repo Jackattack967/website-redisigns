@@ -65,12 +65,13 @@
   .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; padding-top: 56px; padding-bottom: 64px; align-items: center; position: relative; z-index: 1; }
   .wall { position: relative; padding: 28px 0; }
   .stripe {
-    position: absolute; left: -100vw; right: -24px; top: 0; bottom: 0;
+    position: absolute; left: 0; right: -24px; top: 0; bottom: 0;
     background: var(--tape);
-    transform-origin: left center;
-    transform: scaleX(1);
     z-index: 0;
     border-radius: 0 6px 6px 0;
+  }
+  .stripe::before { /* bleed to the left edge of the screen */
+    content: ""; position: absolute; top: 0; bottom: 0; right: 100%; width: 100vw; background: var(--tape);
   }
   .stripe::after { /* soft roller texture at the wet edge */
     content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 28px;
@@ -93,7 +94,7 @@
   .js .stripe { animation: roll 1.5s cubic-bezier(.6,.05,.25,1) .25s both; }
   .js .roller { animation: roller 1.5s cubic-bezier(.6,.05,.25,1) .25s both; }
   .js .wall h1, .js .wall-sub { animation: reveal 1.5s cubic-bezier(.6,.05,.25,1) .25s both; }
-  @keyframes roll { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes roll { from { clip-path: inset(0 100% 0 -100vw); } to { clip-path: inset(0 0 0 -100vw); } }
   @keyframes roller {
     0% { left: 0; opacity: 0; }
     8% { opacity: 1; }
@@ -170,6 +171,7 @@
   .proof { background: var(--spruce); color: var(--white); padding: 52px 0; }
   .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
   .proof-big { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 900; font-stretch: 125%; line-height: 1; display: block; }
+  .proof-range { font-size: clamp(1.5rem, 3vw, 2.125rem); white-space: nowrap; padding-top: .35em; }
   .proof p { color: #C5D7D1; margin-top: 8px; font-size: 0.9875rem; }
   .assurances { margin-top: 32px; padding-top: 24px; border-top: 1px solid #36574E; display: flex; flex-wrap: wrap; gap: 10px 28px; font-weight: 600; }
 
@@ -299,10 +301,10 @@
   <div class="proof" aria-label="Why choose us">
     <div class="wrap">
       <div class="proof-grid">
-        <div><span class="proof-big">2003</span><p>Painting homes and businesses since</p></div>
+        <div><span class="proof-big">2003</span><p>The year we started painting</p></div>
         <div><span class="proof-big">4.9</span><p>Star rating from 178 Google reviews</p></div>
         <div><span class="proof-big">13+</span><p>HomeStars awards</p></div>
-        <div><span class="proof-big">2022–26</span><p>Three Best Rated</p></div>
+        <div><span class="proof-big proof-range">2022–2026</span><p>Three Best Rated</p></div>
       </div>
       <div class="assurances"><span>BBB listed</span><span>Free estimates</span><span>Warranty</span><span>100% satisfaction guarantee</span></div>
     </div>
