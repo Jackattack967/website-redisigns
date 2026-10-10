@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Budget &amp; Save Painters | Vancouver &amp; Burnaby Painting</title>
+<meta name="description" content="Concept redesign for Budget & Save Painters: interior, exterior, commercial and strata painting across Vancouver and Burnaby since 2003.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #FFFFFF;
+    --wall: #F7F8F6;
+    --spruce: #1F3A33;
+    --spruce-2: #2E5248;
+    --tape: #3A7BD5;
+    --tape-deep: #2861B3;
+    --text: #1F3A33;
+    --muted: #4F6660;
+    --line: #DCE3E0;
+    /* swatch chips for project types */
+    --sw-interior: #A9C5B4;
+    --sw-exterior: #E2B04A;
+    --sw-commercial: #7C8FA6;
+    --sw-deck: #9A6B4B;
+    --sw-other: #C9BCE0;
+    --font: "Archivo", system-ui, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--white);
+    color: var(--text);
+    font-family: var(--font);
+    font-stretch: 100%;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  h1, h2, h3 { margin: 0; line-height: 1.02; font-stretch: 125%; font-weight: 800; letter-spacing: -0.01em; }
+  h2 { font-size: clamp(1.75rem, 4.2vw, 2.75rem); }
+  p { margin: 0; }
+  a { color: inherit; text-underline-offset: 3px; }
+  :focus-visible { outline: 3px solid var(--tape); outline-offset: 3px; border-radius: 3px; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+
+  .ribbon { background: var(--spruce); color: #DDE8E4; font-size: 0.875rem; text-align: center; padding: 6px 16px; }
+
+  /* Header */
+  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; padding-bottom: 16px; flex-wrap: wrap; }
+  .brand { text-decoration: none; display: flex; align-items: center; gap: 12px; }
+  .brand-tape {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: radial-gradient(circle at center, var(--white) 0 38%, var(--tape) 39% 100%);
+    box-shadow: inset 0 0 0 2px var(--tape-deep);
+    flex: none;
+  }
+  .brand-name { font-weight: 800; font-stretch: 118%; font-size: 1.1875rem; line-height: 1.1; }
+  .header-call { font-weight: 700; text-decoration: none; display: inline-flex; gap: 8px; align-items: center; }
+  .header-call span { color: var(--muted); font-weight: 400; }
+
+  /* Hero */
+  .hero { background: var(--wall); position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; padding-top: 56px; padding-bottom: 64px; align-items: center; position: relative; z-index: 1; }
+  .wall { position: relative; padding: 28px 0; }
+  .stripe {
+    position: absolute; left: -100vw; right: -24px; top: 0; bottom: 0;
+    background: var(--tape);
+    transform-origin: left center;
+    transform: scaleX(1);
+    z-index: 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .stripe::after { /* soft roller texture at the wet edge */
+    content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 28px;
+    background: repeating-linear-gradient(180deg, rgba(255,255,255,.14) 0 3px, transparent 3px 7px);
+    border-radius: 0 6px 6px 0;
+  }
+  .roller {
+    position: absolute; top: 50%; left: 100%; width: 70px; height: 150px;
+    transform: translate(-30px, -50%);
+    z-index: 2; pointer-events: none;
+  }
+  .wall h1 {
+    position: relative; z-index: 1;
+    color: var(--white);
+    font-size: clamp(2.4rem, 6.4vw, 4.75rem);
+    padding-right: 24px;
+  }
+  .wall-sub { position: relative; z-index: 1; color: #E6EFFB; margin-top: 14px; font-size: 1.125rem; max-width: 36ch; }
+
+  .js .stripe { animation: roll 1.5s cubic-bezier(.6,.05,.25,1) .25s both; }
+  .js .roller { animation: roller 1.5s cubic-bezier(.6,.05,.25,1) .25s both; }
+  .js .wall h1, .js .wall-sub { animation: reveal 1.5s cubic-bezier(.6,.05,.25,1) .25s both; }
+  @keyframes roll { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes roller {
+    0% { left: 0; opacity: 0; }
+    8% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+  @keyframes reveal { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+
+  .hero-points { list-style: none; margin: 26px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--muted); }
+  .hero-points li { display: flex; gap: 8px; align-items: center; }
+  .hero-points li::before { content: ""; width: 14px; height: 6px; background: var(--tape); border-radius: 1px; }
+  .promo { margin-top: 20px; display: inline-block; background: var(--white); border: 1px solid var(--line); border-left: 6px solid var(--tape); padding: 8px 14px; font-weight: 600; }
+
+  /* Quote form */
+  .quote {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 26px;
+    box-shadow: 0 18px 40px -22px rgba(31,58,51,.35);
+    position: relative;
+  }
+  .quote::before { /* a strip of painter's tape holding the card */
+    content: ""; position: absolute; top: -12px; left: 50%; width: 110px; height: 24px;
+    transform: translateX(-50%) rotate(-2deg);
+    background: rgba(58,123,213,.85);
+    box-shadow: 0 2px 4px rgba(0,0,0,.08);
+  }
+  .quote h2 { font-size: 1.625rem; }
+  .quote-sub { color: var(--muted); margin-top: 6px; font-size: 0.9875rem; }
+  fieldset { border: 0; margin: 18px 0 0; padding: 0; }
+  legend, label { font-weight: 700; font-size: 0.9375rem; display: block; margin-bottom: 6px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { position: relative; }
+  .chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .chip label {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin: 0; padding: 7px 12px 7px 8px;
+    border: 2px solid var(--line); border-radius: 4px;
+    font-weight: 600; font-size: 0.9375rem; cursor: pointer;
+    background: var(--white);
+  }
+  .chip label::before { content: ""; width: 18px; height: 22px; border-radius: 2px; background: var(--sw); box-shadow: inset 0 -5px 0 rgba(0,0,0,.08); }
+  .chip input:checked + label { border-color: var(--spruce); background: #F1F5F3; }
+  .chip input:focus-visible + label { outline: 3px solid var(--tape); outline-offset: 2px; }
+  .field { margin-top: 14px; }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  input[type="text"], input[type="tel"], textarea {
+    width: 100%; font: inherit; font-size: 1rem; color: var(--text);
+    border: 2px solid var(--line); border-radius: 4px; padding: 10px 12px; background: var(--white);
+  }
+  input:focus-visible, textarea:focus-visible { outline: 3px solid var(--tape); outline-offset: 1px; border-color: var(--tape); }
+  textarea { min-height: 80px; resize: vertical; }
+  .submit {
+    margin-top: 18px; width: 100%;
+    font: inherit; font-weight: 800; font-stretch: 112%; font-size: 1.0625rem;
+    background: var(--spruce); color: var(--white);
+    border: 0; border-radius: 4px; padding: 14px 18px; cursor: pointer;
+  }
+  .submit:hover { background: var(--spruce-2); }
+  .form-note { margin-top: 10px; font-size: 0.875rem; color: var(--muted); text-align: center; }
+  .form-msg { margin-top: 14px; padding: 14px; border-radius: 4px; background: #EAF2FC; border-left: 5px solid var(--tape); font-size: 0.9375rem; }
+  .form-msg[hidden] { display: none; }
+
+  /* Sections */
+  section { padding: 76px 0; }
+  .intro { color: var(--muted); margin-top: 12px; max-width: 58ch; }
+
+  .services-grid { margin-top: 36px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .service { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 18px 16px 20px; }
+  .service .sw { width: 100%; height: 10px; background: var(--sw, var(--line)); margin-bottom: 14px; border-radius: 1px; }
+  .service h3 { font-size: 1.0625rem; font-stretch: 110%; font-weight: 700; line-height: 1.2; }
+
+  .proof { background: var(--spruce); color: var(--white); padding: 52px 0; }
+  .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+  .proof-big { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 900; font-stretch: 125%; line-height: 1; display: block; }
+  .proof p { color: #C5D7D1; margin-top: 8px; font-size: 0.9875rem; }
+  .assurances { margin-top: 32px; padding-top: 24px; border-top: 1px solid #36574E; display: flex; flex-wrap: wrap; gap: 10px 28px; font-weight: 600; }
+
+  .areas-list { margin: 28px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+  .areas-list li { border: 1px solid var(--line); border-radius: 3px; padding: 6px 12px; background: var(--wall); }
+  .areas-list li.city { background: var(--white); border-color: var(--spruce); font-weight: 700; }
+
+  .reviews { background: var(--wall); }
+  .reviews-head { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 20px; }
+  .score { font-weight: 800; font-stretch: 120%; font-size: 1.25rem; }
+  .score span { color: var(--muted); font-weight: 400; font-stretch: 100%; font-size: 1rem; }
+  .review-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
+  .review-slot { border: 2px dashed #B9C7C2; border-radius: 4px; background: var(--white); padding: 22px; min-height: 170px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; color: var(--muted); }
+  .review-slot p { font-style: italic; }
+
+  .site-footer { background: var(--spruce); color: #C5D7D1; padding: 48px 0 30px; font-size: 0.9875rem; }
+  .site-footer a { color: var(--white); }
+  .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 32px; }
+  .footer-grid h3 { color: var(--white); font-size: 1.0625rem; font-stretch: 112%; margin-bottom: 8px; }
+  .footer-hours { display: grid; grid-template-columns: auto 1fr; gap: 2px 16px; }
+  .footer-base { margin-top: 34px; padding-top: 18px; border-top: 1px solid #36574E; font-size: 0.875rem; }
+
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .proof-grid { grid-template-columns: repeat(2, 1fr); }
+    .review-slots, .footer-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .hero-grid { padding-top: 32px; padding-bottom: 44px; }
+    section { padding: 56px 0; }
+    .quote { padding: 22px 16px; }
+    .row-2 { grid-template-columns: 1fr; }
+    .header-call span { display: none; }
+    .roller { width: 54px; height: 116px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .js .stripe, .js .roller, .js .wall h1, .js .wall-sub { animation: none !important; }
+    .roller { display: none; }
+  }
+</style>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<div class="ribbon" role="note">Concept redesign for Budget &amp; Save Painters. Not the official website.</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Budget and Save Painters, home">
+      <span class="brand-tape" aria-hidden="true"></span>
+      <span class="brand-name">Budget &amp; Save Painters</span>
+    </a>
+    <a class="header-call" href="tel:+17787378989"><span>Free estimates</span> 778-737-8989</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="wall">
+          <div class="stripe" aria-hidden="true"></div>
+          <svg class="roller" viewBox="0 0 70 150" aria-hidden="true">
+            <rect x="8" y="4" width="40" height="88" rx="10" fill="#FFFFFF" stroke="#1F3A33" stroke-width="3"/>
+            <rect x="14" y="10" width="28" height="76" rx="6" fill="#3A7BD5" opacity=".85"/>
+            <path d="M48 48 H60 V104 H34 V118" fill="none" stroke="#1F3A33" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="27" y="116" width="14" height="32" rx="5" fill="#1F3A33"/>
+          </svg>
+          <h1>Fresh walls, done right.</h1>
+          <p class="wall-sub">Interior, exterior and commercial painting across Vancouver and Burnaby since 2003.</p>
+        </div>
+        <ul class="hero-points">
+          <li>Free estimates</li>
+          <li>Warranty included</li>
+          <li>100% satisfaction guarantee</li>
+        </ul>
+        <!-- Promo from a directory listing. Confirm it's current before launch. -->
+        <p class="promo">35% off residential and commercial projects</p>
+      </div>
+
+      <form class="quote" id="quote" novalidate aria-labelledby="quote-title">
+        <h2 id="quote-title">Get a free estimate</h2>
+        <p class="quote-sub">Tell us a little about the job and we'll call you back.</p>
+        <fieldset>
+          <legend>What are we painting?</legend>
+          <div class="chips">
+            <div class="chip" style="--sw: var(--sw-interior)"><input type="radio" name="type" id="t-interior" value="Interior" checked><label for="t-interior">Interior</label></div>
+            <div class="chip" style="--sw: var(--sw-exterior)"><input type="radio" name="type" id="t-exterior" value="Exterior"><label for="t-exterior">Exterior</label></div>
+            <div class="chip" style="--sw: var(--sw-commercial)"><input type="radio" name="type" id="t-commercial" value="Commercial"><label for="t-commercial">Commercial</label></div>
+            <div class="chip" style="--sw: var(--sw-deck)"><input type="radio" name="type" id="t-deck" value="Deck &amp; fence"><label for="t-deck">Deck &amp; fence</label></div>
+            <div class="chip" style="--sw: var(--sw-other)"><input type="radio" name="type" id="t-other" value="Other"><label for="t-other">Other</label></div>
+          </div>
+        </fieldset>
+        <div class="row-2">
+          <div class="field"><label for="q-name">Name</label><input type="text" id="q-name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="q-phone">Phone</label><input type="tel" id="q-phone" name="phone" autocomplete="tel" required></div>
+        </div>
+        <div class="field"><label for="q-hood">Neighbourhood</label><input type="text" id="q-hood" name="neighbourhood" placeholder="e.g. Kitsilano, Burnaby"></div>
+        <div class="field"><label for="q-note">Short note</label><textarea id="q-note" name="note" placeholder="Rooms, square footage, timing, anything useful"></textarea></div>
+        <button class="submit" type="submit">Request my free estimate</button>
+        <p class="form-note">Or call <a href="tel:+17787378989">778-737-8989</a></p>
+        <div class="form-msg" id="form-msg" role="status" hidden></div>
+      </form>
+    </div>
+  </div>
+
+  <section id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <h2 id="services-title">What we paint</h2>
+      <p class="intro">Homes, businesses and strata buildings, inside and out, plus the prep and finishing work around them.</p>
+      <div class="services-grid">
+        <div class="service" style="--sw: var(--sw-interior)"><div class="sw"></div><h3>Interior painting</h3></div>
+        <div class="service" style="--sw: var(--sw-exterior)"><div class="sw"></div><h3>Exterior painting</h3></div>
+        <div class="service" style="--sw: #D8CFC0"><div class="sw"></div><h3>Residential</h3></div>
+        <div class="service" style="--sw: var(--sw-commercial)"><div class="sw"></div><h3>Commercial</h3></div>
+        <div class="service" style="--sw: #5E7F76"><div class="sw"></div><h3>Strata</h3></div>
+        <div class="service" style="--sw: var(--sw-deck)"><div class="sw"></div><h3>Deck &amp; fence</h3></div>
+        <div class="service" style="--sw: #B8D0E8"><div class="sw"></div><h3>Power washing</h3></div>
+        <div class="service" style="--sw: var(--sw-other)"><div class="sw"></div><h3>Colour consultation</h3></div>
+        <div class="service" style="--sw: #A89A86"><div class="sw"></div><h3>Flooring</h3></div>
+        <div class="service" style="--sw: #6F8B6B"><div class="sw"></div><h3>Renovation</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="proof" aria-label="Why choose us">
+    <div class="wrap">
+      <div class="proof-grid">
+        <div><span class="proof-big">2003</span><p>Painting homes and businesses since</p></div>
+        <div><span class="proof-big">4.9</span><p>Star rating from 178 Google reviews</p></div>
+        <div><span class="proof-big">13+</span><p>HomeStars awards</p></div>
+        <div><span class="proof-big">2022–26</span><p>Three Best Rated</p></div>
+      </div>
+      <div class="assurances"><span>BBB listed</span><span>Free estimates</span><span>Warranty</span><span>100% satisfaction guarantee</span></div>
+    </div>
+  </div>
+
+  <section id="areas" aria-labelledby="areas-title">
+    <div class="wrap">
+      <h2 id="areas-title">Where we work</h2>
+      <p class="intro">Across Vancouver, Burnaby and the North Shore. Not sure if you're in range? Just ask.</p>
+      <ul class="areas-list">
+        <li class="city">Vancouver</li>
+        <li class="city">Burnaby</li>
+        <li class="city">Port Moody</li>
+        <li class="city">Richmond</li>
+        <li class="city">North Vancouver</li>
+        <li class="city">West Vancouver</li>
+        <li>Kitsilano</li>
+        <li>Dunbar</li>
+        <li>Fairview</li>
+        <li>Mount Pleasant</li>
+        <li>Point Grey</li>
+        <li>Shaughnessy</li>
+        <li>Kerrisdale</li>
+        <li>UBC</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews" aria-labelledby="reviews-title">
+    <div class="wrap">
+      <div class="reviews-head">
+        <h2 id="reviews-title">From our customers</h2>
+        <p class="score">4.9 on Google <span>178 reviews</span></p>
+      </div>
+      <div class="review-slots">
+        <div class="review-slot"><p>Paste a real Google review here.</p><span>Reviewer name, neighbourhood</span></div>
+        <div class="review-slot"><p>Paste a real Google review here.</p><span>Reviewer name, neighbourhood</span></div>
+        <div class="review-slot"><p>Paste a real Google review here.</p><span>Reviewer name, neighbourhood</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>Budget &amp; Save Painters</h3>
+        <p>Residential, commercial and strata painting since 2003.</p>
+        <!-- Address: the current site lists 1200 W 10th Ave, Vancouver; directories list 2276 Kensington Ave, Burnaby. Ask the owner which to show. -->
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p><a href="tel:+17787378989">778-737-8989</a><br><a href="mailto:budgetpaintersonline@gmail.com">budgetpaintersonline@gmail.com</a></p>
+      </div>
+      <div>
+        <h3>Hours</h3>
+        <div class="footer-hours">
+          <span>Mon–Fri</span><span>6am – 10pm</span>
+          <span>Sat–Sun</span><span>6am – 7:30pm</span>
+        </div>
+      </div>
+    </div>
+    <p class="footer-base">© <span id="year">2026</span> Budget &amp; Save Painters. Concept redesign, not the official website.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var form = document.getElementById("quote");
+    var msg = document.getElementById("form-msg");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      msg.textContent = "Thanks! This is a concept page, so nothing was sent. On the live site, this request would go straight to budgetpaintersonline@gmail.com.";
+      msg.hidden = false;
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  })();
+</script>
+</body>
+</html>
