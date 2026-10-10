@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kingsway Computers Ltd. | Computer Repair in Burnaby</title>
+<meta name="description" content="Concept redesign for Kingsway Computers Ltd., computer repair and custom PCs near Metrotown, Burnaby, since 2007.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #14213D;
+    --steel: #4E5D70;
+    --mist: #E9EEF3;
+    --white: #FFFFFF;
+    --amber: #F0A030;
+    --amber-deep: #B56F0B;
+    --line: #CBD4DE;
+    --display: "Bricolage Grotesque", system-ui, sans-serif;
+    --body: "Atkinson Hyperlegible", system-ui, sans-serif;
+    --wrap: 1120px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--white);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  img, svg { max-width: 100%; display: block; }
+  a { color: var(--ink); text-underline-offset: 3px; }
+  h1, h2, h3 { font-family: var(--display); line-height: 1.1; margin: 0; letter-spacing: -0.01em; }
+  h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; }
+  p { margin: 0; }
+  :focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 20px; }
+
+  .ribbon {
+    background: var(--ink);
+    color: var(--mist);
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 6px 16px;
+  }
+
+  /* Header */
+  .site-header { border-bottom: 1px solid var(--line); background: var(--white); }
+  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 14px; padding-bottom: 14px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand-mark { width: 40px; height: 40px; flex: none; }
+  .brand-name { font-family: var(--display); font-weight: 800; font-size: 1.25rem; line-height: 1.05; }
+  .brand-name small { display: block; font-family: var(--body); font-weight: 400; font-size: 0.8125rem; color: var(--steel); letter-spacing: 0; }
+  .call-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--ink); color: var(--white);
+    font-weight: 700; text-decoration: none;
+    padding: 10px 18px; border-radius: 999px;
+    font-size: 1.0625rem;
+  }
+  .call-btn:hover { background: #22325A; }
+  .call-btn svg { width: 18px; height: 18px; }
+
+  /* Hero */
+  .hero { background: var(--mist); padding: 56px 0 64px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 48px; align-items: start; }
+  .hero h1 { font-size: clamp(2.25rem, 5.5vw, 3.75rem); font-weight: 800; }
+  .hero-lede { margin-top: 18px; color: var(--steel); max-width: 34ch; font-size: 1.1875rem; }
+  .hero-facts { margin: 28px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .hero-facts li { display: flex; gap: 10px; align-items: baseline; }
+  .hero-facts li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--steel); flex: none; transform: translateY(-2px); }
+
+  /* The bench: symptom picker */
+  .bench {
+    background: var(--ink);
+    color: var(--white);
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 24px 48px -24px rgba(20, 33, 61, 0.55);
+    position: relative;
+  }
+  .bench-top { display: flex; align-items: center; gap: 12px; }
+  .status-light {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 0 4px rgba(240, 160, 48, 0.18), 0 0 18px rgba(240, 160, 48, 0.7);
+    animation: pulse 2.4s ease-in-out infinite;
+    flex: none;
+  }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 7px rgba(240, 160, 48, 0.08), 0 0 26px rgba(240, 160, 48, 0.9); } }
+  .bench h2 { font-size: clamp(1.5rem, 3.2vw, 2rem); color: var(--white); }
+  .bench-hint { color: #B9C4D2; margin-top: 6px; font-size: 1rem; }
+  .symptoms { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 20px; }
+  .symptom {
+    font: inherit; font-size: 1rem; font-weight: 700;
+    text-align: left;
+    color: var(--white);
+    background: #1E2E52;
+    border: 2px solid #31446E;
+    border-radius: 12px;
+    padding: 12px 14px;
+    cursor: pointer;
+    display: flex; align-items: center; gap: 10px;
+    min-height: 56px;
+    transition: border-color .15s, background .15s;
+  }
+  .symptom:hover { border-color: var(--steel); background: #233562; }
+  .symptom .led { width: 10px; height: 10px; border-radius: 50%; background: #3A4C74; flex: none; transition: background .15s, box-shadow .15s; }
+  .symptom[aria-pressed="true"] { border-color: var(--amber); background: #26375E; }
+  .symptom[aria-pressed="true"] .led { background: var(--amber); box-shadow: 0 0 10px rgba(240,160,48,.8); }
+  .readout {
+    margin-top: 18px;
+    background: var(--white);
+    color: var(--ink);
+    border-radius: 12px;
+    padding: 20px 22px;
+    min-height: 196px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .readout h3 { font-size: 1.375rem; }
+  .readout p { color: #2A3650; }
+  .readout .call-btn { align-self: flex-start; margin-top: auto; background: var(--amber); color: var(--ink); }
+  .readout .call-btn:hover { background: #F5B653; }
+  .readout.swap { animation: swap .25s ease-out; }
+  @keyframes swap { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  /* Sections */
+  section { padding: 72px 0; }
+  .section-intro { color: var(--steel); margin-top: 12px; max-width: 60ch; }
+
+  /* Visit */
+  .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 32px; align-items: start; }
+  .address { font-size: 1.25rem; font-style: normal; line-height: 1.5; }
+  .address strong { font-family: var(--display); font-size: 1.5rem; display: block; margin-bottom: 4px; }
+  .visit-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+  .ghost-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 2px solid var(--ink); color: var(--ink);
+    padding: 9px 18px; border-radius: 999px;
+    font-weight: 700; text-decoration: none;
+  }
+  .ghost-btn:hover { background: var(--mist); }
+  .contact-lines { margin-top: 24px; display: grid; gap: 6px; }
+  .hours { width: 100%; border-collapse: collapse; font-size: 1.0625rem; }
+  .hours caption { text-align: left; font-family: var(--display); font-weight: 700; font-size: 1.375rem; padding-bottom: 10px; }
+  .hours th, .hours td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+  .hours th { font-weight: 700; width: 45%; }
+  .hours td.closed { color: var(--steel); }
+  .hours tr.today { background: #FFF4E0; }
+  .hours tr.today th::after {
+    content: "Today"; margin-left: 10px;
+    font-size: 0.75rem; font-weight: 700;
+    background: var(--amber); color: var(--ink);
+    padding: 2px 8px; border-radius: 999px; vertical-align: 2px;
+  }
+  .hours-note { font-size: 0.9375rem; color: var(--steel); margin-top: 10px; }
+
+  /* Services */
+  .services { background: var(--mist); }
+  .service-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 36px; }
+  .service-groups h3 { font-size: 1.25rem; padding-bottom: 10px; border-bottom: 2px solid var(--ink); }
+  .service-groups ul { list-style: none; margin: 12px 0 0; padding: 0; }
+  .service-groups li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .promise { margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .promise p { color: var(--steel); }
+  .promise strong { display: block; color: var(--ink); font-family: var(--display); font-size: 1.125rem; margin-bottom: 4px; }
+
+  /* Reviews */
+  .reviews-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .rating { display: flex; align-items: center; gap: 14px; }
+  .rating-num { font-family: var(--display); font-weight: 800; font-size: 3rem; line-height: 1; }
+  .stars { color: var(--amber-deep); font-size: 1.375rem; letter-spacing: 2px; }
+  .rating small { display: block; color: var(--steel); font-size: 0.9375rem; }
+  .review-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
+  .review-slot {
+    border: 2px dashed var(--line);
+    border-radius: 14px;
+    padding: 24px;
+    color: var(--steel);
+    min-height: 180px;
+    display: flex; flex-direction: column; justify-content: space-between; gap: 16px;
+  }
+  .review-slot p { font-style: italic; }
+  .review-slot span { font-size: 0.9375rem; }
+
+  /* Footer */
+  .site-footer { background: var(--ink); color: #C9D2DE; padding: 48px 0 32px; font-size: 1rem; }
+  .site-footer a { color: var(--white); }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
+  .footer-grid h3 { color: var(--white); font-size: 1.125rem; margin-bottom: 8px; }
+  .footer-base { margin-top: 36px; padding-top: 20px; border-top: 1px solid #2B3B5E; font-size: 0.875rem; }
+
+  @media (max-width: 900px) {
+    .hero-grid, .visit-grid { grid-template-columns: 1fr; gap: 32px; }
+    .service-groups, .promise, .review-slots { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-lede { max-width: none; }
+  }
+  @media (max-width: 480px) {
+    body { font-size: 1.0625rem; }
+    .hero { padding: 36px 0 44px; }
+    section { padding: 52px 0; }
+    .bench { padding: 20px 16px; border-radius: 14px; }
+    .symptoms { grid-template-columns: 1fr; }
+    .site-header .call-btn { padding: 8px 14px; font-size: 1rem; }
+    .brand-name small { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon" role="note">Concept redesign for Kingsway Computers Ltd. Not the official website.</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Kingsway Computers Ltd., home">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="2" y="6" width="36" height="24" rx="4" fill="#14213D"/>
+        <rect x="6" y="10" width="28" height="16" rx="2" fill="#E9EEF3"/>
+        <rect x="14" y="31" width="12" height="3" fill="#4E5D70"/>
+        <circle cx="31" cy="22" r="2.5" fill="#F0A030"/>
+      </svg>
+      <span class="brand-name">Kingsway Computers <small>Burnaby repair shop since 2007</small></span>
+    </a>
+    <a class="call-btn" href="tel:+16042221000">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg>
+      604-222-1000
+    </a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Computer trouble? Bring it to the bench.</h1>
+        <p class="hero-lede">Friendly, knowledgeable repairs for every make, including older models. Near Metrotown since 2007.</p>
+        <ul class="hero-facts">
+          <li>Name-brand, industry-standard parts</li>
+          <li>Every machine tested before it goes home</li>
+          <li>4.9 stars from about 194 Google reviews</li>
+        </ul>
+      </div>
+
+      <div class="bench" aria-labelledby="bench-title">
+        <div class="bench-top">
+          <span class="status-light" aria-hidden="true"></span>
+          <h2 id="bench-title">What's your computer doing?</h2>
+        </div>
+        <p class="bench-hint">Tap the one that sounds most like yours.</p>
+        <div class="symptoms" role="group" aria-label="Symptoms">
+          <button class="symptom" type="button" data-key="power" aria-pressed="true" aria-controls="readout"><span class="led" aria-hidden="true"></span>Won't turn on</button>
+          <button class="symptom" type="button" data-key="slow" aria-pressed="false" aria-controls="readout"><span class="led" aria-hidden="true"></span>Running slow</button>
+          <button class="symptom" type="button" data-key="virus" aria-pressed="false" aria-controls="readout"><span class="led" aria-hidden="true"></span>Pop-ups or a virus</button>
+          <button class="symptom" type="button" data-key="screen" aria-pressed="false" aria-controls="readout"><span class="led" aria-hidden="true"></span>Broken screen or keyboard</button>
+          <button class="symptom" type="button" data-key="files" aria-pressed="false" aria-controls="readout"><span class="led" aria-hidden="true"></span>Need my files back</button>
+          <button class="symptom" type="button" data-key="new" aria-pressed="false" aria-controls="readout"><span class="led" aria-hidden="true"></span>Want a new PC</button>
+        </div>
+        <div class="readout" id="readout" aria-live="polite">
+          <h3 id="readout-title">Won't turn on</h3>
+          <p id="readout-body">Start-up problems and crashes are everyday work for us. We'll work out what's wrong, whether that's a failed drive or a motherboard that needs replacing, and explain it in plain language before we fix anything.</p>
+          <a class="call-btn" href="tel:+16042221000">Call 604-222-1000</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="visit" aria-labelledby="visit-title">
+    <div class="wrap">
+      <h2 id="visit-title">Visit the shop</h2>
+      <p class="section-intro">We're on Kingsway near Metrotown. Bring your desktop or laptop in, or ask about on-site service.</p>
+      <div class="visit-grid">
+        <div>
+          <address class="address">
+            <strong>Kingsway Computers Ltd.</strong>
+            18-4429 Kingsway<br>
+            Burnaby, BC V5H 2A1
+          </address>
+          <div class="visit-links">
+            <a class="ghost-btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=18-4429+Kingsway,+Burnaby,+BC+V5H+2A1" target="_blank" rel="noopener">Get directions</a>
+            <a class="ghost-btn" href="tel:+16042221000">Call the shop</a>
+          </div>
+          <div class="contact-lines">
+            <p>Phone: <a href="tel:+16042221000">604-222-1000</a></p>
+            <p>Email: <a href="mailto:derek@kingswaycomputer.com">derek@kingswaycomputer.com</a></p>
+            <p>Ask for Derek, the owner and manager.</p>
+          </div>
+        </div>
+        <div>
+          <!-- Hours per Google listing. Confirm with owner. -->
+          <table class="hours" id="hours">
+            <caption>Opening hours</caption>
+            <tbody>
+              <tr data-day="1"><th scope="row">Monday</th><td class="closed">Closed</td></tr>
+              <tr data-day="2"><th scope="row">Tuesday</th><td>10:30am – 5:30pm</td></tr>
+              <tr data-day="3"><th scope="row">Wednesday</th><td>10:30am – 5:30pm</td></tr>
+              <tr data-day="4"><th scope="row">Thursday</th><td>10:30am – 5:30pm</td></tr>
+              <tr data-day="5"><th scope="row">Friday</th><td>10:30am – 5:30pm</td></tr>
+              <tr data-day="6"><th scope="row">Saturday</th><td>9:30am – 4:00pm</td></tr>
+              <tr data-day="0"><th scope="row">Sunday</th><td class="closed">Closed</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <h2 id="services-title">What we fix</h2>
+      <p class="section-intro">Repairs on all makes, including older models. Not sure which of these applies? Call and describe what's happening.</p>
+      <div class="service-groups">
+        <div>
+          <h3>Problems and repairs</h3>
+          <ul>
+            <li>Start-up issues</li>
+            <li>Slow performance</li>
+            <li>System crashes</li>
+            <li>Virus, spyware and adware cleanup</li>
+            <li>Laptop screen and keyboard repair</li>
+            <li>Wireless and printer problems</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Parts and upgrades</h3>
+          <ul>
+            <li>Motherboard replacement</li>
+            <li>Memory upgrades</li>
+            <li>SSD and drive replacement</li>
+            <li>Windows upgrades and OS reinstall</li>
+            <li>Software installation</li>
+            <li>Custom-built PCs</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Setup and care</h3>
+          <ul>
+            <li>Data backup</li>
+            <li>Network setup</li>
+            <li>On-site service</li>
+            <li>All makes, including older models</li>
+          </ul>
+        </div>
+      </div>
+      <div class="promise">
+        <p><strong>Name-brand parts</strong>Industry-standard components from brands you know.</p>
+        <p><strong>Tested before it leaves</strong>Every machine is rigorously tested before it goes out the door.</p>
+        <p><strong>People who explain</strong>Friendly, knowledgeable staff who talk in plain language.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" aria-labelledby="reviews-title">
+    <div class="wrap">
+      <div class="reviews-head">
+        <h2 id="reviews-title">What customers say</h2>
+        <div class="rating">
+          <span class="rating-num">4.9</span>
+          <span><span class="stars" aria-hidden="true">★★★★★</span><small>on Google, about 194 reviews</small></span>
+        </div>
+      </div>
+      <div class="review-slots">
+        <div class="review-slot"><p>Paste a real Google review here.</p><span>Reviewer name, month and year</span></div>
+        <div class="review-slot"><p>Paste a real Google review here.</p><span>Reviewer name, month and year</span></div>
+        <div class="review-slot"><p>Paste a real Google review here.</p><span>Reviewer name, month and year</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>Kingsway Computers Ltd.</h3>
+        <p>Computer repair, upgrades and custom-built PCs in Burnaby since 2007.</p>
+      </div>
+      <div>
+        <h3>Find us</h3>
+        <p>18-4429 Kingsway<br>Burnaby, BC V5H 2A1</p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p><a href="tel:+16042221000">604-222-1000</a><br><a href="mailto:derek@kingswaycomputer.com">derek@kingswaycomputer.com</a></p>
+      </div>
+    </div>
+    <p class="footer-base">© <span id="year">2026</span> Kingsway Computers Ltd. Concept redesign, not the official website.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var answers = {
+      power: {
+        title: "Won't turn on",
+        body: "Start-up problems and crashes are everyday work for us. We'll work out what's wrong, whether that's a failed drive or a motherboard that needs replacing, and explain it in plain language before we fix anything."
+      },
+      slow: {
+        title: "Running slow",
+        body: "A slow computer can often be brought back with a memory upgrade, a switch to an SSD, or a clean reinstall of Windows. We'll tell you which one makes sense for your machine."
+      },
+      virus: {
+        title: "Pop-ups or a virus",
+        body: "We clean out viruses, spyware and adware. If you're seeing strange pop-ups, stop using the computer for banking or passwords and give us a call."
+      },
+      screen: {
+        title: "Broken screen or keyboard",
+        body: "We repair laptop screens and keyboards on all makes, including older models. Call with your laptop's make and model and we'll talk you through it."
+      },
+      files: {
+        title: "Need my files back",
+        body: "Call before you try anything else. Tell us what happened, and we'll talk through your options, from drive replacement to setting up data backup so it doesn't happen again."
+      },
+      "new": {
+        title: "Want a new PC",
+        body: "We build custom PCs with name-brand, industry-standard parts, and every one is rigorously tested before it goes out. Tell us what you use your computer for and we'll suggest a build."
+      }
+    };
+    var buttons = document.querySelectorAll(".symptom");
+    var readout = document.getElementById("readout");
+    var title = document.getElementById("readout-title");
+    var body = document.getElementById("readout-body");
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var a = answers[btn.dataset.key];
+        buttons.forEach(function (b) { b.setAttribute("aria-pressed", b === btn ? "true" : "false"); });
+        title.textContent = a.title;
+        body.textContent = a.body;
+        readout.classList.remove("swap");
+        void readout.offsetWidth;
+        readout.classList.add("swap");
+      });
+    });
+
+    // Highlight today's hours (shop time zone)
+    var dayIndex;
+    try {
+      var name = new Intl.DateTimeFormat("en-US", { weekday: "short", timeZone: "America/Vancouver" }).format(new Date());
+      dayIndex = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(name);
+    } catch (e) { dayIndex = new Date().getDay(); }
+    var row = document.querySelector('#hours tr[data-day="' + dayIndex + '"]');
+    if (row) row.classList.add("today");
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  })();
+</script>
+</body>
+</html>
